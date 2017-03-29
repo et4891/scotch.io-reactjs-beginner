@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Scotch.io ReactJS Tutorial</title>
+    <style>
+        .counter {
+            background-color: #79aec8;
+            width: 500px;
+            border-radius: 5px;
+            margin: auto;
+            padding: 10px 30px;
+            text-align: center;
+        }
+
+        .counter button {
+            background: #f1c40f;
+            width: 50%;
+            border-radius: 5px;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,23 +37,32 @@
     // React Code Goes Here
 
     // Component, first character is upper case
-    var MyComponent = React.createClass({
-        getInitialState: function () {
-          return {
-              greeting: 'Hello',
-              name: 'ET'
-          }
+    var Counter = React.createClass({
+        incrementCount: function () {
+            // this sets the 'count' in state to increment by one
+            this.setState({
+                count: this.state.count + 1
+            })
         },
-
+        getInitialState: function () {
+            return {
+                // initial the 'count' value when page loads
+                count: 0
+            }
+        },
         render: function () {
             return (
-                <h1>{this.state.greeting} {this.state.name}</h1>
+                // in react, use className instead of class
+                <div className="counter">
+                    <h1>Count: {this.state.count}</h1>
+                    <button onClick={this.incrementCount}>Increment</button>
+                </div>
             )
         }
-    })    ;
+    });
 
     ReactDOM.render(
-        <MyComponent/>,
+        <Counter/>,
         document.getElementById('mount-point')
     )
 </script>
