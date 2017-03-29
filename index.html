@@ -21,15 +21,22 @@
 
     // Component, first character is upper case
     var MyComponent = React.createClass({
+        getInitialState: function () {
+          return {
+              greeting: 'Hello',
+              name: 'ET'
+          }
+        },
+
         render: function () {
             return (
-                <h1>Hello, {this.props.name}</h1>
+                <h1>{this.state.greeting} {this.state.name}</h1>
             )
         }
     })    ;
 
     ReactDOM.render(
-        <MyComponent name="ET" />,
+        <MyComponent/>,
         document.getElementById('mount-point')
     )
 </script>
